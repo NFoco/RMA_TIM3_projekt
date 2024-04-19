@@ -2,6 +2,7 @@ package com.example.rma_tim3_projekt.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,10 +35,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.rma_tim3_projekt.R
+import com.example.rma_tim3_projekt.navigation.Screen
 
 @Composable
-fun PocetniEkran () {
+fun PocetniEkran(navController: NavController) {
 
     var text by remember {mutableStateOf("")}
     val screenWidthInDp = 800.dp
@@ -69,6 +72,7 @@ fun PocetniEkran () {
                     .width(screenWidthInDp / 2 - 10.dp)
                     .clip(RoundedCornerShape(20.dp))
                     .background(Color(0xC8EB79FF))
+                    .clickable { navController.navigate(Screen.PretrazivanjeScreen.route) }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.paketici),
@@ -88,27 +92,7 @@ fun PocetniEkran () {
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
             )
-            @Composable
-            fun LazyRowExample(numbers: Array<Int>) {
 
-                // Place A lazy Row
-                LazyRow(
-                    contentPadding = PaddingValues(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-
-                    item {
-                        RowItem(number = 0)
-                    }
-                    item {
-                        RowItem(number = 1)
-                    }
-                    item {
-                        RowItem(number = 2)
-                    }
-
-                }
-            }
             Text(
                 text = "Vrste ljubimaca",
                 fontSize = 30.sp,

@@ -2,7 +2,7 @@ package com.example.rma_tim3_projekt.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,14 +29,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.rma_tim3_projekt.R
+import com.example.rma_tim3_projekt.navigation.Screen
 
 @Composable
-fun PretrazivanjeScreen() {
+fun PretrazivanjeScreen(navController: NavHostController) {
 
     var text by remember { mutableStateOf("") }
     val screenWidthInDp = with(LocalDensity.current) {
@@ -92,6 +93,7 @@ fun PretrazivanjeScreen() {
                                 .width(screenWidthInDp / 2 - 10.dp)
                                 .clip(RoundedCornerShape(20.dp))
                                 .background(Color(0xC8FFF179))
+                                .clickable { navController.navigate(Screen.PocetniEkran.route) }
                         ){
                             Image(
                                 painter = painterResource(id = R.drawable.suha_hrana),
